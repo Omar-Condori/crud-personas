@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Personas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 Gestión de Personas</h1>
+            <p>Sistema CRUD completo</p>
+        </header>
+
+        <section class="form-section">
+            <h2 id="form-title">➕ Agregar Nueva Persona</h2>
+            
+            <form id="personaForm">
+                <input type="hidden" id="personaId">
+                
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input 
+                        type="text" 
+                        id="nombre" 
+                        placeholder="Ej: Juan" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="apellidos">Apellidos:</label>
+                    <input 
+                        type="text" 
+                        id="apellidos" 
+                        placeholder="Ej: Pérez García" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="dni">DNI:</label>
+                    <input 
+                        type="text" 
+                        id="dni" 
+                        placeholder="Ej: 12345678A" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="cargo">Cargo:</label>
+                    <select id="cargo" required>
+                        <option value="">-- Selecciona un cargo --</option>
+                        <option value="Ingeniero">Ingeniero</option>
+                        <option value="Doctor">Doctor</option>
+                        <option value="Profesor">Profesor</option>
+                        <option value="Abogado">Abogado</option>
+                        <option value="Arquitecto">Arquitecto</option>
+                        <option value="Contador">Contador</option>
+                        <option value="Enfermero">Enfermero</option>
+                        <option value="Diseñador">Diseñador</option>
+                        <option value="Desarrollador">Desarrollador</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">
+                        💾 Guardar
+                    </button>
+                    <button type="button" id="btnCancelar" class="btn btn-secondary" style="display: none;">
+                        ❌ Cancelar
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="table-section">
+            <h2>👥 Lista de Personas</h2>
+            
+            <div id="loading" class="loading">Cargando datos...</div>
+            
+            <div id="noData" class="no-data" style="display: none;">
+                No hay personas registradas aún.
+            </div>
+
+            <div class="table-container">
+                <table id="tablaPersonas">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>DNI</th>
+                            <th>Cargo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaBody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

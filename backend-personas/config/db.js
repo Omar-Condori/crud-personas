@@ -1,24 +1,23 @@
-// Importamos el módulo mysql2 para conectarnos a la base de datos
+// Importamos el módulo mysql2
 const mysql = require('mysql2');
+// Importamos dotenv para leer variables de entorno
+require('dotenv').config();
 
-// Creamos la conexión con los datos de tu MySQL
+// Creamos la conexión con variables de entorno
 const connection = mysql.createConnection({
-    host: 'localhost',        // Servidor donde está MySQL (tu computadora)
-    user: 'root',             // Usuario de MySQL (por defecto es 'root')
-    password: '45275975',  // ⚠️ CAMBIAR: Pon aquí tu contraseña de MySQL
-    database: 'crud_personas' // Nombre de la base de datos que creamos
+    host: process.env.DB_HOST,     // ⚠️ CAMBIADO
+    user: process.env.DB_USER,     // ⚠️ CAMBIADO
+    password: process.env.DB_PASSWORD, // ⚠️ CAMBIADO
+    database: process.env.DB_DATABASE  // ⚠️ CAMBIADO
 });
 
-// Intentamos conectar a la base de datos
+// (El resto de tu código de conexión.connect es igual)
 connection.connect((error) => {
-    if (error) {
-        // Si hay error, lo mostramos en la consola
-        console.error('❌ Error al conectar con la base de datos:', error.message);
-        return;
-    }
-    // Si todo salió bien, mostramos un mensaje de éxito
-    console.log('✅ Conexión exitosa con MySQL');
+    if (error) {
+        console.error('❌ Error al conectar con la base de datos:', error.message);
+        return;
+    }
+    console.log('✅ Conexión exitosa con MySQL');
 });
 
-// Exportamos la conexión para usarla en otros archivos
 module.exports = connection;
